@@ -1,12 +1,8 @@
 name: Build Desktop Apps
 
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
 
-# REQUIRED: Grants permission to upload releases directly to your repo
 permissions:
   contents: write
 
