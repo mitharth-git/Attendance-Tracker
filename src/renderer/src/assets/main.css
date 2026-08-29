@@ -1,0 +1,113 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Avenir Next', 'Trebuchet MS', 'Segoe UI', sans-serif;
+  --color-ink: #1c1914;
+  --color-paper: #f4efe6;
+  --color-panel: #fffdf8;
+  --color-line: #ddd4c4;
+  --color-forest: #1f4d3a;
+  --color-moss: #2f6f52;
+  --color-gold: #c4a35a;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+.fc {
+  --fc-border-color: #e4d9c7;
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: #faf6ee;
+  --fc-today-bg-color: #efe4c8;
+  --fc-button-bg-color: #1f4d3a;
+  --fc-button-border-color: #1f4d3a;
+  --fc-button-hover-bg-color: #2f6f52;
+  --fc-button-hover-border-color: #2f6f52;
+  --fc-button-active-bg-color: #16382b;
+  --fc-button-active-border-color: #16382b;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.15rem;
+  font-weight: 650;
+}
+
+.fc .fc-daygrid-day-frame {
+  min-height: 108px;
+  cursor: pointer;
+}
+
+.fc .fc-event {
+  border: 0;
+  border-radius: 6px;
+  padding: 2px 0;
+}
+
+.fc .fc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  text-transform: none;
+}
+
+.fc .fc-prev-button,
+.fc .fc-next-button {
+  width: 2.25rem;
+  padding-inline: 0;
+}
+
+.fc .fc-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.7rem;
+  height: 0.7rem;
+  font-size: 0;
+}
+
+.fc .fc-icon-chevron-left::before,
+.fc .fc-icon-chevron-right::before {
+  content: '';
+  display: block;
+  width: 0.52rem;
+  height: 0.52rem;
+  border: solid #fff;
+  border-width: 0 0 2px 2px;
+}
+
+.fc .fc-icon-chevron-left::before {
+  margin-left: 0.15rem;
+  transform: rotate(45deg);
+}
+
+.fc .fc-icon-chevron-right::before {
+  margin-right: 0.15rem;
+  transform: rotate(-135deg);
+}
+
+.fc .fc-daygrid-day.holiday-day,
+.fc .fc-daygrid-day.holiday-day .fc-daygrid-day-frame,
+.fc .fc-daygrid-day.holiday-day .fc-daygrid-day-bg,
+.fc .fc-daygrid-day.holiday-day .fc-daygrid-day-events {
+  background-color: #8ecae6 !important;
+}
+
+.fc .fc-bg-event {
+  background-color: #8ecae6 !important;
+  opacity: 1;
+}
+
+.fc .fc-daygrid-day.holiday-picked .fc-daygrid-day-frame {
+  box-shadow: inset 0 0 0 2px #1f4d3a;
+}
