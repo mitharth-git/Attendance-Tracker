@@ -6,6 +6,10 @@ on:
       - 'v*'
   workflow_dispatch:
 
+# REQUIRED: Grants permission to upload releases directly to your repo
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -29,7 +33,17 @@ jobs:
       - name: Download Pre-built Electron Binaries
         run: npx electron-builder install-app-deps
 
-      - name: Build and Publish Installers
-        run: npx electron-builder --win --mac --publish always
+      - name: Build Web Assets (Vite/React)
+        run: npm run build
+
+      - name: Build and Publish Windows
+        if: matrix.os == 'windows-latest'
+        run: npx electron-builder --win --publish always
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Publish macOS
+        if: matrix.os == 'macos-latest'
+        run: npx electron-builder --mac --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
